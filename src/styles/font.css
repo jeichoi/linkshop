@@ -1,0 +1,15 @@
+:root {
+  /* Font sizes */
+  --font-20: 20pt;
+  --font-18: 18pt;
+  --font-17: 17pt;
+  --font-16: 16pt;
+  --font-15: 15pt;
+  --font-14: 14pt;
+
+  /* Font weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+}

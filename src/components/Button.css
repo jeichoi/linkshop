@@ -1,0 +1,10 @@
+.Button {
+  padding: 9px 23px;
+  border-radius: 37px;
+  border: none;
+  color: #fff;
+  background-color: var(--color-gray-2);
+}
+.Button_CREATE {
+  background-color: var(--color-brand-blue);
+}

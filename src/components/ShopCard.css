@@ -1,0 +1,65 @@
+.ShopCard {
+  height: 237px;
+  background-color: var(--color-white-2);
+  border-radius: 25px;
+  position: relative;
+}
+
+.ShopCard .ShopCard_wrapper {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px 15px;
+}
+.ShopCard .ShopCard_wrapper .ShopCard_info {
+  flex-grow: 2;
+}
+.ShopCard .ShopCard_wrapper > img {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+}
+.ShopCard .ShopCard_wrapper h3 {
+  font-size: var(--font-18);
+  font-weight: var(--weight-semibold);
+  color: var(--color-black);
+  padding-bottom: 10px;
+}
+.ShopCard .ShopCard_wrapper .ShopCard_userid {
+  font-size: var(--font-14);
+  font-weight: var(--weight-regular);
+  color: var(--color-gray-1);
+}
+.ShopCard .like {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  flex-grow: 1;
+}
+.ShopCard .like img {
+  width: 19px;
+  height: 21px;
+}
+.ShopCard .like span {
+  height: 16px;
+  min-width: 20px;
+  font-size: var(--font-16);
+  font-weight: var(--weight-medium);
+  color: var(--color-black);
+}
+.ShopCard .ShopCard_products {
+  padding: 0 20px 10px;
+  font-size: var(--font-15);
+  font-weight: var(--weight-medium);
+  color: var(--color-black);
+}
+.ShopCard .ShopCard_image {
+  padding: 0 20px;
+}
+.ShopCard .ShopCard_image img {
+  width: 95px;
+  border-radius: 15px;
+}
