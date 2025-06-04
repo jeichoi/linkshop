@@ -21,9 +21,9 @@ const ShopCard = ({ item }) => {
   return (
     <div className="ShopCard">
       <div className="ShopCard_wrapper">
-        <img src={shop_image} />
+        <img src={item.shop.imageUrl} />
         <div className="ShopCard_info">
-          <h3>{item.name}</h3>
+          <h3>{item.shop.urlName}</h3>
           <div className="ShopCard_userid">@{item.userId}</div>
         </div>
         <div className="like" onClick={handleLikeClick}>
@@ -33,7 +33,15 @@ const ShopCard = ({ item }) => {
       </div>
       <div className="ShopCard_products">대표상품 {item.productsCount}</div>
       <div className="ShopCard_image">
-        <img src={product_image} />
+        {/* 여기서부터 이미지 url 받아오고 뿌려주기   */}
+        {item.products.map((product) => (
+          <img
+            key={product.id}
+            src={product.imageUrl}
+            alt={product.name}
+            className="ShopCard_productImage"
+          />
+        ))}
       </div>
     </div>
   );

@@ -1,0 +1,14 @@
+.ProductList {
+  width: 696px;
+  margin: 0 auto;
+}
+.ProductList .Product-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ProductList .Product-top h2 {
+  font-size: var(--font-16);
+  font-weight: var(--weight-semibold);
+}
+

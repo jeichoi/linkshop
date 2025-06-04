@@ -8,3 +8,9 @@
 .Button_CREATE {
   background-color: var(--color-brand-blue);
 }
+.Button_ADD {
+  color: var(--color-brand-blue);
+  background-color: #fff;
+  font-size: var(--font-16);
+  font-weight: var(--weight-semibold);
+}

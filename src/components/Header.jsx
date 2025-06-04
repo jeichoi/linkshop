@@ -1,22 +1,22 @@
 import "./Header.css";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
 
-const Header = () => {
+const Header = ({ title }) => {
   const nav = useNavigate();
 
   return (
-    <div className="Header">
-      <img src={logo} alt="logo" />
-      <Button
-        text={"생성하기"}
+    <header className="Header">
+      <img
+        src={logo}
+        alt="logo"
         onClick={() => {
-          nav("/linkpost");
+          nav("/list");
+          window.location.reload();
         }}
-        type={"CREATE"}
       />
-    </div>
+      <div className="header_right">{title}</div>
+    </header>
   );
 };
 export default Header;

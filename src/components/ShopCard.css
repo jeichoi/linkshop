@@ -58,7 +58,17 @@
 }
 .ShopCard .ShopCard_image {
   padding: 0 20px;
+  display: flex;
+  gap: 10px;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
 }
+
+.ShopCard .ShopCard_image::-webkit-scrollbar {
+  display: none;
+}
+
 .ShopCard .ShopCard_image img {
   width: 95px;
   border-radius: 15px;
