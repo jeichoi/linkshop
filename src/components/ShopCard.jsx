@@ -2,8 +2,6 @@ import "./ShopCard.css";
 import { useState } from "react";
 import likes_fill from "../assets/status_fill.png";
 import likes_empty from "../assets/status_empty.png";
-import shop_image from "../assets/image.png";
-import product_image from "../assets/product.jpg";
 
 const ShopCard = ({ item }) => {
   const [liked, setLiked] = useState(false);

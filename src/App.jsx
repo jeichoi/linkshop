@@ -13,9 +13,9 @@ function App() {
   const [items, setItems] = useState([]);
   const handleLoad = async () => {
     const { list } = await getItems();
+    
     setItems(list);
   };
-
   useEffect(() => {
     handleLoad();
   }, []);
