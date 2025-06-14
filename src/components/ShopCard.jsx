@@ -31,7 +31,6 @@ const ShopCard = ({ item }) => {
       </div>
       <div className="ShopCard_products">대표상품 {item.productsCount}</div>
       <div className="ShopCard_image">
-        {/* 여기서부터 이미지 url 받아오고 뿌려주기   */}
         {item.products.map((product) => (
           <img
             key={product.id}

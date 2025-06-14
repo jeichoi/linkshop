@@ -3,6 +3,7 @@ import "./ProductForm.css";
 import visible from "../assets/btn_visibility_on_24px.png";
 import invisible from "../assets/btn_visibility_off_24px.png";
 import Button from "./Button";
+import { uploadImage } from "../api";
 
 const ProductForm = ({ index, type, onFormChange }) => {
   const [image, setImage] = useState(null);
@@ -14,10 +15,13 @@ const ProductForm = ({ index, type, onFormChange }) => {
   const [formData, setFormData] = useState({
     shopname: "",
     price: "",
-    url: "",
+    imageUrl: "",
+    shopUrl: "",
     userId: "",
     password: "",
     productname: "",
+    productUrl: "",
+    userName: "",
   });
 
   const handleInputChange = (e) => {
@@ -31,8 +35,8 @@ const ProductForm = ({ index, type, onFormChange }) => {
 
     const requiredFields =
       type === "shop"
-        ? ["shopname", "url", "userId", "password"]
-        : ["productname", "price"];
+        ? ["shopname", "imageUrl", "userId", "password", "shopUrl"]
+        : ["productname", "price", "productUrl"];
 
     const isValid = requiredFields.every(
       //every는 requiredFields의 배열의 각각 요소를 field라는 이름으로 가져옴
@@ -50,16 +54,30 @@ const ProductForm = ({ index, type, onFormChange }) => {
     //formData[field]는 value값이 들어감
     //formData={url: "https://example.com",}이면
     //formData[field]는 url이고, 그 값은"https://example.com"
+    onFormChange(isValid, formData); //부모에게 전달
+  }, [formData, type]); //type을 의존성 배열에 안 넣으면 type이 바뀌어도 useEffect가 실행되지 않아서 여전히 "product" 기준으로 검사함
 
-    onFormChange(isValid); //부모에게 전달
-  }, [formData, type]);//type을 의존성 배열에 안 넣으면 type이 바뀌어도 useEffect가 실행되지 않아서 여전히 "product" 기준으로 검사함
-
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     if (!e.target.files) return;
     const file = e.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file); //createObjectURL 이미지 업로드 후 미리보기
-      setImage(url);
+    if (!file) return;
+
+    try {
+      const uploadedUrl = await uploadImage(file); // 이미지 업로드
+      const updated = { ...formData };
+
+      if (type === "shop") {
+        updated.imageUrl = uploadedUrl;
+      } else {
+        updated.productUrl = uploadedUrl;
+      }
+      console.log(uploadedUrl);
+
+      setFormData(updated);
+      setImage(uploadedUrl); // 미리보기도 실제 업로드된 URL로 변경
+    } catch (err) {
+      console.error("이미지 업로드 실패:", err);
+      alert("이미지 업로드에 실패했습니다.");
     }
   };
 
@@ -89,7 +107,7 @@ const ProductForm = ({ index, type, onFormChange }) => {
 
       {image ? (
         <div className="product-preview">
-          <Button onClick={() => setImage(e.target.files[0])} type={"DELETE"} />
+          <Button onClick={() => setImage(null)} type={"DELETE"} />
           <img src={image} alt="미리보기" width="100" />
         </div>
       ) : (
@@ -128,7 +146,7 @@ const ProductForm = ({ index, type, onFormChange }) => {
           <p>Url</p>
           <input
             type="text"
-            name="url"
+            name="shopUrl"
             placeholder="Url을 입력해 주세요."
             onChange={handleInputChange}
           />
